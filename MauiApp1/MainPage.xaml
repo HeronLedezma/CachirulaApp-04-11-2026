@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MauiApp1.MainPage">
+
+    <Grid>
+        <!-- Vista principal con ScrollView -->
+        <ScrollView>
+            <VerticalStackLayout Padding="30,0" Spacing="25">
+                <Image
+                    x:Name="ImagenDeFondo"
+                    Source="cachi.png"
+                    HeightRequest="350"
+                    Aspect="AspectFit"
+                    Opacity="0.0"
+                    SemanticProperties.Description="dot net bot in a submarine number ten" />
+
+                <Label
+                    Text="Hola guapo!"
+                    Style="{StaticResource Headline}"
+                    SemanticProperties.HeadingLevel="Level1" />
+
+                <Label
+                    Text="Bienvenido a esta nueva app &#10;donde apreciamos tu presencia"
+                    Style="{StaticResource SubHeadline}"
+                    SemanticProperties.HeadingLevel="Level2"
+                    SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+
+                <Button
+                    x:Name="CounterBtn"
+                    Text="Tocáme suave para ver los cambios" 
+                    SemanticProperties.Hint="Counts the number of times you click"
+                    Clicked="OnCounterClicked"
+                    HorizontalOptions="Fill" />
+
+                <!-- Botón para reiniciar la opacidad (inicialmente oculto) -->
+                <Button
+                    x:Name="ResetBtn"
+                    Text="Reiniciar Opacidad"
+                    Clicked="OnResetClicked"
+                    IsVisible="False"
+                    HorizontalOptions="Fill"
+                    BackgroundColor="Red"
+                    TextColor="White" />
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Botón Emergente (Superpuesto en pantalla al llegar a 15 clics) -->
+        <Grid x:Name="OverlaySecreto" 
+              BackgroundColor="#CC000000" 
+              IsVisible="False" 
+              HorizontalOptions="FillAndExpand" 
+              VerticalOptions="FillAndExpand">
+
+            <Button 
+                Text="Abrir contenido secreto" 
+                Clicked="OnAbrirSecretoClicked" 
+                BackgroundColor="#FF4081" 
+                TextColor="White" 
+                FontSize="18"
+                CornerRadius="10"
+                HorizontalOptions="Center" 
+                VerticalOptions="Center" 
+                Padding="20,10"/>
+        </Grid>
+
+        <!-- Reproductor de video en pantalla completa (Oculto inicialmente) -->
+        <toolkit:MediaElement 
+            x:Name="ReelPlayer"
+            Source="embed://reelcachi.mp4"
+            ShouldShowPlaybackControls="False"
+            MediaEnded="OnMediaEnded"
+            IsVisible="False"
+            Aspect="AspectFill"
+            HorizontalOptions="FillAndExpand" 
+            VerticalOptions="FillAndExpand" />
+    </Grid>
+
+</ContentPage>
